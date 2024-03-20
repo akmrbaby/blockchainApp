@@ -67,6 +67,27 @@ Web フレームワーク：Next.js
 UI ライブラリ：Mantine
 
 ```bash
+npx create-next-app --ts frontend
+# ESLint: Yes
+# Tailwind CSS: No
+# "src/" directory: No
+# App Router: Yes
+# default import alias: No
 
+cd frontend
+# バージョン固定で再インストール（本のサンプルコードをそのまま動かすため）
+npm install --save-exact next@13.4.13 bufferutil@4.0.8 utf-8-validate@6.0.3
+rm -rf node_modules/
+rm package-lock.json
+npm install # これで依存関係が解消できるらしい
+
+npm install @tabler/icons-react@2.32.0 @mantine/core@7.0.0 @mantine/hooks@7.0.0
+
+npm install --save-dev postcss@8.4.29 postcss-preset-mantine@1.7.0 postcss-simple-vars@7.0.1
+
+touch postcss.config.js
+# postcss.config.js を編集
+
+npm install ethers@6.7.0
 
 ```
