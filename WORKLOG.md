@@ -58,8 +58,11 @@ npx hardhat node
 # 別ターミナルを起動
 
 npx hardhat run --network localhost scripts/deploy-local.ts
-# これでスマートコントラクトのデプロイまでの一連の流れが完了。
+# output
+# MyToken deployed to: 0x5FbDB2315678afecb367f032d93F642f64180aa3
 ```
+
+これでスマートコントラクトのデプロイまでの一連の流れが完了。
 
 ## 2. フロントエンドの作成
 
@@ -109,10 +112,11 @@ mkdir abi
 # frontend/abi 配下に、contracts/MyToken.sol/MyToken.json をコピー
 
 npm run dev
-
-# Hardhat の秘密鍵を読み込んだ Metamask アカウントを接続して、"Tokens owned" ボタンを押下。
-# トークン残高が表示されていればOK。
 ```
+
+Hardhat の秘密鍵を読み込んだ Metamask アカウントを接続して、"Tokens owned" ボタンを押下。
+
+トークン残高が表示されていれば OK。
 
 ## 3. OpenZeppelin による開発
 
@@ -121,4 +125,21 @@ npm run dev
 cd contracts
 touch MyERC20.sol
 
+# MyERC20.sol を編集
+
+cd ..
+npx hardhat compile
+
+# scripts/deploy-local.ts にトークン名を MyToken から MyERC20 に変更したものを追加
+
+npx hardhat run --network localhost scripts/deploy-local.ts
+# output
+# MyToken deployed to: 0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512
+# MyERC20 deployed to: 0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0
+
+touch test/MyERC20.ts
+
+# test/MyERC20.ts を編集
+
+npx hardhat test
 ```
