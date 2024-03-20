@@ -18,7 +18,11 @@ npx hardhat init
 
 npm install @openzeppelin/contracts@4.9.3
 
+# GitHub でソースコード管理（Repository は UI 上で作成する必要あり）
 git init
+git remote add origin git@github.com:akmrbaby/blockchainApp.git
+git branch -M main
+git push -u origin main
 ```
 
 ## 1. チュートリアル
@@ -66,8 +70,8 @@ npx hardhat run --network localhost scripts/deploy-local.ts
 
 ## 2. フロントエンドの作成
 
-Web フレームワーク：Next.js
-UI ライブラリ：Mantine
+- Web フレームワーク：Next.js
+- UI ライブラリ：Mantine
 
 ### Next.js の起動まで
 
@@ -112,11 +116,10 @@ mkdir abi
 # frontend/abi 配下に、contracts/MyToken.sol/MyToken.json をコピー
 
 npm run dev
+
+# Hardhat の秘密鍵を読み込んだ Metamask アカウントを接続して、"Tokens owned" ボタンを押下。
+# トークン残高が表示されていれば OK。
 ```
-
-Hardhat の秘密鍵を読み込んだ Metamask アカウントを接続して、"Tokens owned" ボタンを押下。
-
-トークン残高が表示されていれば OK。
 
 ## 3. OpenZeppelin による開発
 
