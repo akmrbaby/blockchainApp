@@ -66,6 +66,8 @@ npx hardhat run --network localhost scripts/deploy-local.ts
 Web フレームワーク：Next.js
 UI ライブラリ：Mantine
 
+### Next.js の起動まで
+
 ```bash
 npx create-next-app --ts frontend
 # ESLint: Yes
@@ -89,5 +91,34 @@ touch postcss.config.js
 # postcss.config.js を編集
 
 npm install ethers@6.7.0
+
+npm run dev # localhost:3000 で Next の起動を確認
+```
+
+### フロントエンドの画面の編集
+
+```bash
+truncate -s 0 -c ./app/globals.css # frontend/app/global.css のファイルの中身を削除する（ファイル自体は削除しない）
+
+# frontend/tsconfig.json の "module" および "moduleResolution" の値を "node16" に変更
+
+# frontend/app/page.tsx の中身を編集
+
+mkdir abi
+
+# frontend/abi 配下に、contracts/MyToken.sol/MyToken.json をコピー
+
+npm run dev
+
+# Hardhat の秘密鍵を読み込んだ Metamask アカウントを接続して、"Tokens owned" ボタンを押下。
+# トークン残高が表示されていればOK。
+```
+
+## 3. OpenZeppelin による開発
+
+```bash
+# ディレクトリを blockchainApp まで戻る
+cd contracts
+touch MyERC20.sol
 
 ```
