@@ -146,3 +146,32 @@ touch test/MyERC20.ts
 
 npx hardhat test
 ```
+
+## 4. NFT の作成
+
+```bash
+touch contracts/MyERC721.sol
+
+# contracts/MyERC721.sol を編集
+
+npx hardhat compile
+
+touch test/MyERC721.ts
+
+# test/MyERC721.ts を編集
+
+npx hardhat test
+
+# scripts/deploy-local.ts を編集
+
+npx hardhat node
+
+# 別ターミナルで
+npx hardhat run --network localhost scripts/deploy-local.ts
+# output
+# MyToken deployed to: 0x5FbDB2315678afecb367f032d93F642f64180aa3
+# MyERC20 deployed to: 0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512
+# MyERC721 deployed to: 0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0
+```
+
+## 5. NFT マーケットプレイス開発
