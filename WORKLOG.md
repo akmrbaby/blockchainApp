@@ -175,3 +175,47 @@ npx hardhat run --network localhost scripts/deploy-local.ts
 ```
 
 ## 5. NFT マーケットプレイス開発
+
+- アプリケーションメニューの作成
+- ページ遷移のためのナビゲーションメニューの作成
+- Metamask Wallet に接続するボタンの準備
+
+```bash
+cd frontend/
+
+mkdir context
+touch context/web3.context.tsx
+
+# context/web3.context.tsx を編集
+
+mkdir -p components/common/
+touch components/common/NavbarLinks.tsx
+touch components/common/AppMenu.tsx
+
+# components/common/NavbarLinks.tsx と components/common/AppMenu.tsx を編集
+
+# app/layout.tsx の編集
+
+npm run dev
+
+# localhost:3000 をブラウザで開いて接続確認
+
+# artifacts/contracts の全てのフォルダを frontend/abi 以下にコピー
+# (solidity ファイルを編集した場合は、コンパイルして再度コピーする必要あり)
+
+mkdir app/mynft/
+touch app/mynft/page.tsx
+
+# app/mynft/page.tsx を編集
+
+# components/common/NavbarLinks.tsx を編集
+
+npm run dev
+
+# localhost:3000/mynft にアクセス。
+# "Mint NFT" ボタンで NFT を作成。
+#
+# 残り（p.172-208）をいったん飛ばして先にDAOをやる
+#
+#
+```
