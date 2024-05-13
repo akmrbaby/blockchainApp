@@ -219,3 +219,29 @@ npm run dev
 #
 #
 ```
+
+## 6. DAO 開発入門
+
+- DAO の概要
+- DAO の設計原則
+- DAO の技術要素
+- DAO に関する規格・標準実装
+- ガバナンストークンと投票機能
+
+## 7. DAO システム開発
+
+-
+
+```bash
+# contracts/MyERC20.sol を編集
+
+touch contracts/MyTimelockController.sol
+# contracts/MyTimelockController.sol を編集
+
+touch contracts/MyGovernor.sol
+# contracts/MyGovernor.sol を編集
+
+# hardhat.config.ts に optimizer の設定を追加
+
+npx hardhat compile
+```
