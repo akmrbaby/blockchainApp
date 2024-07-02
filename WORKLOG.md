@@ -244,4 +244,12 @@ touch contracts/MyGovernor.sol
 # hardhat.config.ts に optimizer の設定を追加
 
 npx hardhat compile
+
+# test/MyGovernor.ts を編集
+
+npx hardhat test
+
+# 下記エラーが出て動かない
+# NotImplementedError: Method 'HardhatEthersProvider.resolveName' is not implemented
+
 ```
