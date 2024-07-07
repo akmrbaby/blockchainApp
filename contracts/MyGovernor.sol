@@ -8,6 +8,10 @@ import "@openzeppelin/contracts/governance/extensions/GovernorVotes.sol";
 import "@openzeppelin/contracts/governance/extensions/GovernorVotesQuorumFraction.sol";
 import "@openzeppelin/contracts/governance/extensions/GovernorTimelockControl.sol";
 
+/**
+ * @dev MyGovernorコントラクトはOpenZeppelinのいくつかのガバナンス拡張を継承しています。
+ * これにより、総合的なガバナンス機能を備えたスマートコントラクトを作成します。
+ */
 contract MyGovernor is
     Governor,
     GovernorSettings,
@@ -16,6 +20,11 @@ contract MyGovernor is
     GovernorVotesQuorumFraction,
     GovernorTimelockControl
 {
+    /**
+     * @dev コンストラクタは各種設定と初期値を定義します。
+     * @param _token 投票に使用されるトークン
+     * @param _timelock タイムロックコントローラー
+     */
     constructor(
         IVotes _token,
         TimelockController _timelock
@@ -28,8 +37,8 @@ contract MyGovernor is
     {}
 
     /**
-     * @dev 投票の遅延時間を返す
-     * @return 投票の遅延時間(s)
+     * @dev 投票の遅延時間を返します。
+     * @return 投票の遅延時間（秒）
      */
     function votingDelay()
         public
@@ -41,8 +50,8 @@ contract MyGovernor is
     }
 
     /**
-     * @dev 投票の有効期間を返す
-     * @return 投票の有効期間(s)
+     * @dev 投票の有効期間を返します。
+     * @return 投票の有効期間（秒）
      */
     function votingPeriod()
         public
@@ -54,7 +63,10 @@ contract MyGovernor is
     }
 
     /**
-     * @dev 指定されたブロック番号における必要な最小投票数を返す
+     * @dev 指定されたブロック番号における必要なクォーラム（最小投票数）を返します。
+     * クォーラムは提案が有効であると見なされるために必要な最小投票数を表します。
+     * @param blockNumber クォーラムを計算するブロックの番号
+     * @return 必要なクォーラム数
      */
     function quorum(
         uint256 blockNumber
@@ -68,7 +80,9 @@ contract MyGovernor is
     }
 
     /**
-     * @dev 提案IDと現在の状態を返す
+     * @dev 提案IDの現在の状態を返します。
+     * @param proposalId 提案ID
+     * @return 提案の状態
      */
     function state(
         uint256 proposalId
@@ -82,7 +96,7 @@ contract MyGovernor is
     }
 
     /**
-     * @dev 新しい提案を作成する
+     * @dev 新しい提案を作成します。
      * @param targets 提案の対象となるアドレスの配列
      * @param values 提案の対象となるアドレスに送る値（ETH）の配列
      * @param calldatas 提案の対象となるアドレスに送る関数呼び出しデータの配列
@@ -99,7 +113,8 @@ contract MyGovernor is
     }
 
     /**
-     * @dev 提案が通るために必要な投票数を返す
+     * @dev 提案が通るために必要な投票数を返します。
+     * @return 提案が通るために必要な投票数。
      */
     function proposalThreshold()
         public
@@ -111,7 +126,7 @@ contract MyGovernor is
     }
 
     /**
-     * @dev 既存の提案を実行する
+     * @dev 既存の提案を実行します。
      * @param proposalId 実行する提案のID
      * @param targets 提案の対象となるアドレスの配列
      * @param values 提案の対象となるアドレスに送る値（ETH）の配列
@@ -129,7 +144,12 @@ contract MyGovernor is
     }
 
     /**
-     * @dev 既存の提案をキャンセルする
+     * @dev 既存の提案をキャンセルします。
+     * @param targets 提案の対象となるアドレスの配列
+     * @param values 提案の対象となるアドレスに送る値（ETH）の配列
+     * @param calldatas 提案の対象となるアドレスに送る関数呼び出しデータの配列
+     * @param descriptionHash 提案の説明のハッシュ
+     * @return キャンセルされた提案のID
      */
     function _cancel(
         address[] memory targets,
@@ -141,7 +161,8 @@ contract MyGovernor is
     }
 
     /**
-     * @dev 実行者を返す。この場合はタイムロックコントローラー。
+     * @dev 実行者（Executor）を返します。この場合はタイムロックコントローラーです。
+     * @return 実行者のアドレス
      */
     function _executor()
         internal
@@ -153,7 +174,9 @@ contract MyGovernor is
     }
 
     /**
-     * @dev コントラクトがサポートするインターフェースを確認
+     * @dev コントラクトがサポートするインターフェースを確認します。
+     * @param interfaceId インターフェースのID
+     * @return サポートしているかどうか（真偽値）
      */
     function supportsInterface(
         bytes4 interfaceId

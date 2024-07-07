@@ -20,7 +20,7 @@ import { IconCubePlus } from "@tabler/icons-react";
 
 const contractAddress = "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0";
 
-export default function MyNFT() {
+export default function MyNFTPage() {
   const { signer } = useContext(Web3SignerContext);
 
   const [myNFTContract, setMyERC721Contract] = useState<ethers.Contract | null>(
